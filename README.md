@@ -9,6 +9,7 @@ The lab starts with the built-in breast cancer dataset from scikit-learn so the 
 1. Stage 1: Ensemble Baselines
    - Load a binary classification dataset.
    - Build simple metrics and plotting helpers.
+   - Compare a first table of baseline model results.
    - Prepare notebooks for baseline model experiments.
 
 2. Stage 2: ISLE / Lasso Post-processing
@@ -42,4 +43,4 @@ pip install -r requirements.txt
 jupyter notebook notebooks/01_baselines_breast_cancer.ipynb
 ```
 
-Stage 1 currently loads the breast cancer dataset, checks train/test shapes, and reviews class balance before baseline models are added.
+Stage 1 now loads the breast cancer dataset, checks train/test shapes, reviews class balance, and trains a first set of baseline models for a metrics comparison table.
