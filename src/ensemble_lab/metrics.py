@@ -9,7 +9,7 @@ from sklearn.metrics import (
 
 def compute_binary_metrics(y_true, y_score, threshold=0.5):
     """Compute common binary classification metrics from probability scores."""
-    y_pred = y_score >= threshold
+    y_pred = [score >= threshold for score in y_score]
     fpr, tpr, _ = roc_curve(y_true, y_score)
     ks = max(tpr - fpr)
 
