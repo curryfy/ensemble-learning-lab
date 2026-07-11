@@ -2,7 +2,7 @@
 
 This is a simple educational Python project for learning Chapter 16, Ensemble Learning, from *The Elements of Statistical Learning* through hands-on scikit-learn experiments.
 
-The project starts with a small breast cancer sanity-check baseline, then moves to MNIST for the main voting ensemble experiment.
+The project starts with a small breast cancer sanity-check baseline, then moves to MNIST for voting and stacking ensemble experiments.
 
 ## Project stages
 
@@ -19,8 +19,9 @@ The project starts with a small breast cancer sanity-check baseline, then moves 
    - Save a results table and model-comparison figure when the notebook is run.
 
 3. Stage 3: Stacking / Blender
-   - Add stacking or blender-style ensemble experiments later.
-   - Do not implement this stage yet.
+   - Train a Logistic Regression blender on base learner predictions from MNIST.
+   - Compare stacking against Extra-Trees, Random Forest, hard voting, and soft voting.
+   - Inspect blender coefficients to interpret each base learner's contribution.
 
 ## Why MNIST for Stage 2?
 
@@ -67,3 +68,9 @@ jupyter notebook notebooks/02_mnist_voting_ensemble.ipynb
 ```
 
 The Stage 2 notebook uses a fast mode by default: 20,000 training examples, 5,000 validation examples, and 10,000 test examples. Set `FAST_MODE = False` in the notebook to use the full book-style split of 50,000 train, 10,000 validation, and 10,000 test examples.
+
+Stage 3 MNIST stacking/blender:
+
+```bash
+jupyter notebook notebooks/03_mnist_stacking_blender.ipynb
+```
