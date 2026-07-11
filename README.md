@@ -19,7 +19,8 @@ The project starts with a small breast cancer sanity-check baseline, then moves 
    - Save a results table and model-comparison figure when the notebook is run.
 
 3. Stage 3: Stacking / Blender
-   - Train a Logistic Regression blender on base learner predictions from MNIST.
+   - Use the Stage 2 base learners to create meta-features from MNIST predictions.
+   - Train a Logistic Regression blender on those meta-features.
    - Compare stacking against Extra-Trees, Random Forest, hard voting, and soft voting.
    - Inspect blender coefficients to interpret each base learner's contribution.
 
@@ -35,6 +36,14 @@ Stage 2 compares individual classifiers against hard voting and soft voting:
 - Logistic Regression
 - Hard voting ensemble
 - Soft voting ensemble
+
+## Stage 3 stacking/blender
+
+Stage 3 extends the MNIST experiment from equal-weight voting to a learned combination rule. The base learners are the same model families used in Stage 2: Extra-Trees, Random Forest, an SVM-like linear classifier, and Logistic Regression.
+
+Each fitted base learner produces predictions on the validation and test sets. These outputs become meta-features for a second-level model. The blender is a simple Logistic Regression model trained on validation-set meta-features, so the experiment asks whether learned combination weights can improve on hard voting and soft voting.
+
+The Stage 3 notebook compares stacking with Extra-Trees, Random Forest, hard voting, and soft voting. It also includes a blender coefficient analysis: larger absolute coefficients suggest that the blender gives a base learner more influence in its final predictions.
 
 ## Setup
 
