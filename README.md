@@ -2,7 +2,7 @@
 
 This is a simple educational Python project for learning Chapter 16, Ensemble Learning, from *The Elements of Statistical Learning* through hands-on scikit-learn experiments.
 
-The project starts with a small breast cancer sanity-check baseline, then moves to MNIST for the main voting ensemble experiment.
+The project starts with a small breast cancer sanity-check baseline, then moves to MNIST for voting and stacking ensemble experiments.
 
 ## Project stages
 
@@ -19,8 +19,10 @@ The project starts with a small breast cancer sanity-check baseline, then moves 
    - Save a results table and model-comparison figure when the notebook is run.
 
 3. Stage 3: Stacking / Blender
-   - Add stacking or blender-style ensemble experiments later.
-   - Do not implement this stage yet.
+   - Use base learner predictions from MNIST as meta-features.
+   - Train a Logistic Regression blender on validation-set meta-features.
+   - Compare stacking with Extra-Trees, Random Forest, hard voting, and soft voting.
+   - Inspect blender coefficients to interpret each base learner's contribution.
 
 ## Why MNIST for Stage 2?
 
@@ -34,6 +36,14 @@ Stage 2 compares individual classifiers against hard voting and soft voting:
 - Logistic Regression
 - Hard voting ensemble
 - Soft voting ensemble
+
+## Stage 3 stacking/blender
+
+Stage 3 extends the MNIST experiment from fixed voting rules to a learned ensemble. The base learners are the same model families used in Stage 2: Extra-Trees, Random Forest, an SVM-like linear classifier, and Logistic Regression.
+
+Each fitted base learner produces predictions that become meta-features for a second-level model. A simple Logistic Regression blender is trained on validation-set meta-features, then compared with the strongest individual models, hard voting, and soft voting.
+
+The notebook also includes a coefficient analysis for the blender. Larger absolute coefficients suggest that a base learner has more influence on the final stacked prediction, making the experiment useful both as a performance comparison and as an interpretable ensemble-learning exercise.
 
 ## Setup
 
@@ -67,3 +77,9 @@ jupyter notebook notebooks/02_mnist_voting_ensemble.ipynb
 ```
 
 The Stage 2 notebook uses a fast mode by default: 20,000 training examples, 5,000 validation examples, and 10,000 test examples. Set `FAST_MODE = False` in the notebook to use the full book-style split of 50,000 train, 10,000 validation, and 10,000 test examples.
+
+Stage 3 MNIST stacking/blender:
+
+```bash
+jupyter notebook notebooks/03_mnist_stacking_blender.ipynb
+```
